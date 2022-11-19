@@ -1,0 +1,37 @@
+name: exec_elf
+authors:
+  - name: dustyw0lf
+    handle:
+    link: https://github.com/dustyw0lf
+description: |
+  This script will load an ELF file located on the Empire server and execute it in the memory of the target host.
+software: 
+tactics: []
+techniques:
+  - T1055
+background: false
+output_extension:
+needs_admin: false
+opsec_safe: false
+language: python
+min_language_version: '2.7'
+comments:
+  - This module is an adaptation of Vincent Berg's userland execve implementation in Python.
+  - https://www.anvilsecure.com/blog/userland-execution-of-binaries-directly-from-python.html
+  - https://github.com/anvilsecure/ulexecve
+options:
+  - name: Agent
+    description: Agent to run module on.
+    required: true
+    value: ''
+  - name: File
+    description: ELF file to load and execute.
+    required: true
+    value: ''
+  - name: ArgumentList
+    description: Optional list of arguments that will be passed to the ELF.
+    required: false
+    value: ''
+script_path: code_execution/exec_elf.py
+advanced:
+  custom_generate: true
